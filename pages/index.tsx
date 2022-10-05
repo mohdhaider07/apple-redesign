@@ -1,13 +1,16 @@
-import type { NextPage } from 'next'
-import Navbar from '../components/Navbar'
+import type { NextPage } from "next";
+import Landing from "../components/Landing";
+import Navbar from "../components/Navbar";
 
 const Home: NextPage = () => {
-  return (
-    < >
-      <Navbar/>
-      
-    </>
-  )
-}
+	return (
+		<>
+			<Navbar />
+			<main>
+				<Landing />
+			</main>
+		</>
+	);
+};
 
-export default Home
+export default Home;
