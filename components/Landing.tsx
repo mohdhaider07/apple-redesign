@@ -1,6 +1,8 @@
 import Image from "next/image";
 import React from "react";
+
 import { iPhoneImage } from "./Image";
+import Button from "./molecules/Button";
 const Landing = () => {
 	return (
 		<section className="mx-auto flex h-screen max-w-[1350px] items-center justify-between px-8">
@@ -12,7 +14,8 @@ const Landing = () => {
 					<span className="block">By Intellect</span>
 					<span className="block">Driven By Values</span>
 				</h1>
-				<div>
+				<div className="space-x-8">
+					<Button title="Buy Now" />
 					<a className="link">Learn more</a>
 				</div>
 			</div>

@@ -6,7 +6,7 @@ const Home: NextPage = () => {
 	return (
 		<>
 			<Navbar />
-			<main>
+			<main className="h-[200vh] bg-[#E7ECEE]">
 				<Landing />
 			</main>
 		</>

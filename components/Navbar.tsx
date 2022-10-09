@@ -35,7 +35,7 @@ const Navbar = () => {
 				<Link href="/checkout">
 					<div className="relative">
 						<BsHandbag className="headerIcon" />
-						<span className="absolute -top-1 -right-1 flex h-4 w-4  items-center justify-center rounded-full bg-gradient-to-r from-pink-500 to-violet-500 text-white ">
+						<span className="absolute -top-1 -right-1 flex h-4 w-4 items-center  justify-center rounded-full bg-gradient-to-r from-pink-500 to-violet-500 text-xs text-white ">
 							5
 						</span>
 					</div>
