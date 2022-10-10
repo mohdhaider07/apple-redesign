@@ -5,7 +5,7 @@ import { iPhoneImage } from "./Image";
 import Button from "./molecules/Button";
 const Landing = () => {
 	return (
-		<section className="mx-auto flex h-screen max-w-[1350px] items-center justify-between px-8">
+		<section className="sticky top-0 mx-auto flex h-screen max-w-[1350px] items-center justify-between px-8">
 			<div className="space-y-8">
 				<h1 className="space-y-3 text-5xl font-semibold tracking-wide lg:text-6xl xl:text-7xl ">
 					<span className="gradiantPinkToViolet block  bg-clip-text text-transparent">
@@ -16,7 +16,7 @@ const Landing = () => {
 				</h1>
 				<div className="space-x-8">
 					<Button title="Buy Now" />
-					<a className="link">Learn more</a>
+					<a className="link headerLink ">Learn more</a>
 				</div>
 			</div>
 			<div className="relative hidden h-[450px] w-[450px] transition duration-500 md:inline lg:h-[650px]  lg:w-[600px]">
