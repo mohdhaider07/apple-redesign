@@ -2,8 +2,9 @@ import React from "react";
 import { Tab } from "@headlessui/react";
 interface Props {
 	categories: Category[];
+	showProducts: (id: string) => void;
 }
-function Tabs({ categories }: Props) {
+function Tabs({ categories, showProducts }: Props) {
 	return (
 		<>
 			<Tab.Group>
@@ -11,13 +12,14 @@ function Tabs({ categories }: Props) {
 					{categories?.map((category) => (
 						<Tab
 							className={({ selected }) =>
-								`rounded-t-lg px-5 py-3 text-sm outline-none md:py-4 md:px-6 md:text-base ${
+								`whitespace-nowrap rounded-t-lg px-5 py-3 text-sm outline-none md:py-4 md:px-6 md:text-base ${
 									selected
-										? "borderGradient bg-[#35383C] text-white"
+										? "borderGradient"
 										: "border-b-2 border-[#35383C] text-[#747474]"
 								}`
 							}
 							key={category._id}
+							onClick={() => showProducts(category._id)}
 						>
 							{category.title}
 						</Tab>

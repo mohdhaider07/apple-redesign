@@ -2,14 +2,22 @@ import type { GetServerSideProps } from "next";
 import Landing from "../components/Landing";
 import Navbar from "../components/Navbar";
 import { fetchCategories } from "../utils/fetchCategories";
+import { fetchProducts } from "../utils/fetchProducts";
 //headlessui
 import Tabs from "../components/molecules/Tabs";
 interface Props {
 	categories: Category[];
+	products: Product[];
 }
 
-const Home = ({ categories }: Props) => {
-	// console.log(categories);
+const Home = ({ categories, products }: Props) => {
+	console.log(products);
+	const showProducts = (_id: string) => {
+		const filteredProducts = products.filter(
+			(product) => product.category._ref === _id
+		);
+		console.log(filteredProducts);
+	};
 	return (
 		<div className="">
 			<Navbar />
@@ -22,7 +30,7 @@ const Home = ({ categories }: Props) => {
 						New Promos
 					</h1>
 					<div className="text-white">
-						<Tabs categories={categories} />
+						<Tabs categories={categories} showProducts={showProducts} />
 					</div>
 				</div>
 			</section>
@@ -34,10 +42,12 @@ export default Home;
 //Backend Code
 export const getServerSideProps: GetServerSideProps<Props> = async () => {
 	const categories: Category[] = await fetchCategories();
-	// console.log(categories);
+	const products: Product[] = await fetchProducts();
+
 	return {
 		props: {
 			categories,
+			products,
 		},
 	};
 };

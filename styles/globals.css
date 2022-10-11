@@ -30,3 +30,10 @@
            before:bg-black hover:before:scale-x-100 before:duration-200;
     }
 }
+.borderGradient {
+    padding-bottom: 5px;
+    background: linear-gradient(to right, #ec4899, #8b5cf6) left bottom
+      no-repeat;
+      background-color: #35383C;
+    background-size: 100% 2px;
+  }
