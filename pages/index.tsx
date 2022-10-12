@@ -7,6 +7,7 @@ import { fetchProducts } from "../utils/fetchProducts";
 
 //headlessui
 import Tabs from "../components/molecules/Tabs";
+import Basket from "../components/Basket";
 interface Props {
 	categories: Category[];
 	products: Product[];
@@ -21,6 +22,7 @@ const Home = ({ categories, products }: Props) => {
 	};
 	return (
 		<div className="">
+			<Basket />
 			<Navbar />
 			<main className="relative h-[200vh] bg-[#E7ECEE]">
 				<Landing />

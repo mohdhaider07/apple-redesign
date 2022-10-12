@@ -7,8 +7,12 @@ import { logo } from "./Image";
 import { AiOutlineSearch } from "react-icons/ai";
 import { BsHandbag } from "react-icons/bs";
 import { BiUser } from "react-icons/bi";
+//redux
+import { useSelector } from "react-redux";
+import { selectBasketItems } from "../redux/basketSlice";
 
 const Navbar = () => {
+	const items = useSelector(selectBasketItems);
 	const session = false;
 	return (
 		<header className="sticky top-0 z-30 flex items-center justify-between bg-[#E7ECEE] p-4">
@@ -36,7 +40,7 @@ const Navbar = () => {
 					<div className="relative">
 						<BsHandbag className="headerIcon" />
 						<span className="absolute -top-1 -right-1 flex h-4 w-4 items-center  justify-center rounded-full bg-gradient-to-r from-pink-500 to-violet-500 text-xs text-white ">
-							5
+							{items.length}
 						</span>
 					</div>
 				</Link>
