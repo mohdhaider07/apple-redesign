@@ -2,7 +2,7 @@ import React from "react";
 import { Tab } from "@headlessui/react";
 interface Props {
 	categories: Category[];
-	showProducts: (id: string) => void;
+	showProducts: (id: number) => JSX.Element[];
 }
 function Tabs({ categories, showProducts }: Props) {
 	return (
@@ -19,17 +19,16 @@ function Tabs({ categories, showProducts }: Props) {
 								}`
 							}
 							key={category._id}
-							onClick={() => showProducts(category._id)}
 						>
 							{category.title}
 						</Tab>
 					))}
 				</Tab.List>
-				<Tab.Panels className="flex flex-col items-center ">
-					<Tab.Panel>content 1</Tab.Panel>
-					<Tab.Panel>content 2</Tab.Panel>
-					<Tab.Panel>content 3</Tab.Panel>
-					<Tab.Panel>content 4</Tab.Panel>
+				<Tab.Panels className="mt-12 flex flex-col items-center md:mt-16 ">
+					<Tab.Panel className="tabPanel  ">{showProducts(0)}</Tab.Panel>
+					<Tab.Panel className=" tabPanel">{showProducts(1)}</Tab.Panel>
+					<Tab.Panel className=" tabPanel">{showProducts(2)}</Tab.Panel>
+					<Tab.Panel className=" tabPanel">{showProducts(3)}</Tab.Panel>
 				</Tab.Panels>
 			</Tab.Group>
 		</>

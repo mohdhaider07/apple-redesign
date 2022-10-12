@@ -1,8 +1,10 @@
 import type { GetServerSideProps } from "next";
 import Landing from "../components/Landing";
 import Navbar from "../components/Navbar";
+import Product from "../components/Product";
 import { fetchCategories } from "../utils/fetchCategories";
 import { fetchProducts } from "../utils/fetchProducts";
+
 //headlessui
 import Tabs from "../components/molecules/Tabs";
 interface Props {
@@ -12,11 +14,10 @@ interface Props {
 
 const Home = ({ categories, products }: Props) => {
 	console.log(products);
-	const showProducts = (_id: string) => {
-		const filteredProducts = products.filter(
-			(product) => product.category._ref === _id
-		);
-		console.log(filteredProducts);
+	const showProducts = (index: number) => {
+		return products
+			.filter((product) => product.category._ref === categories[index]._id)
+			.map((product) => <Product key={product._id} product={product} />);
 	};
 	return (
 		<div className="">

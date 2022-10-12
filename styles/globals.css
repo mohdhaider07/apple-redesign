@@ -29,6 +29,10 @@
             before:transform before:transition-all
            before:bg-black hover:before:scale-x-100 before:duration-200;
     }
+
+    .tabPanel{
+        @apply grid gap-4 sm:grid-cols-2 grid-cols-1 md:grid-cols-1 md:gap-6 lg:grid-cols-2 xl:grid-cols-3;
+    }
 }
 .borderGradient {
     padding-bottom: 5px;
