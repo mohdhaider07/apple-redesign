@@ -1,3 +1,3 @@
-# Next.js + Tailwind CSS Example
+# Next.js + Tailwind CSS +Sanity
 
-#Live Link => https://apple-redesign-six.vercel.app/
+#Live Link => https://apple-redesign-cvbzrj30g-haiderahmed12786-gmailcom.vercel.app/

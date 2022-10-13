@@ -37,7 +37,7 @@ const Navbar = () => {
 				<a className="headerLink">Support</a>
 				<a className="headerLink">Business</a>
 			</div>
-			<div className="flex items-center justify-center gap-x-4 md:w-1/5">
+			<div className="flex items-center justify-center sm:gap-x-4  md:w-1/5">
 				<AiOutlineSearch className="headerIcon" />
 				<Link href="/checkout">
 					<div className="relative">

@@ -32,7 +32,7 @@ const Button = ({ title, onClick, loading, width, padding, noIcon }: Props) => {
 						></path>
 					</svg>
 				)}
-				{loading ? "Loading.." : title}
+				{loading ? "Loading..." : title}
 			</span>
 		</button>
 	);
