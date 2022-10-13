@@ -48,7 +48,7 @@ const Success = ({ products }: Props) => {
 		<div>
 			<Head>
 				<title>Thank you! - Apple</title>
-				<link rel="icon" href="/favicon.ico" />
+				<link rel="icon" href="./image/logo/apple-logo.png" />
 			</Head>
 			<header className="mx-auto max-w-xl">
 				<Link href="/">

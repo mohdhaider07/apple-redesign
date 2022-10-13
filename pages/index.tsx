@@ -1,4 +1,5 @@
 import type { GetServerSideProps } from "next";
+import Head from "next/head";
 import Landing from "../components/Landing";
 import Navbar from "../components/Navbar";
 import Product from "../components/Product";
@@ -10,6 +11,8 @@ import type { Session } from "next-auth";
 //headlessui
 import Tabs from "../components/molecules/Tabs";
 import Basket from "../components/Basket";
+// image
+import { logo } from "../components/Image";
 interface Props {
 	categories: Category[];
 	products: Product[];
@@ -25,6 +28,10 @@ const Home = ({ categories, products }: Props) => {
 	};
 	return (
 		<div className="">
+			<Head>
+				<title>Apple -Re Design</title>
+				<link rel="icon" href="./image/logo/apple-logo.png" />
+			</Head>
 			<Basket />
 			<Navbar />
 			<main className="relative h-[200vh] bg-[#E7ECEE]">

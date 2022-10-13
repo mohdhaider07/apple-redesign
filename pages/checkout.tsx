@@ -70,7 +70,7 @@ const Checkout = () => {
 		<div className="min-h-screen overflow-hidden bg-[#E7ECEE]">
 			<Head>
 				<title>Bag - Apple</title>
-				<link rel="icon" href="/favicon.ico" />
+				<link rel="icon" href="./image/logo/apple-logo.png" />
 			</Head>
 			<Navbar />
 			<main className="mx-auto max-w-5xl pb-24">

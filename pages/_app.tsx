@@ -8,7 +8,7 @@ import { SessionProvider } from "next-auth/react";
 // Redux
 import { Provider } from "react-redux";
 
-function MyApp({ Component, pageProps: { session, ...pageProps } }) {
+const MyApp = ({ Component, pageProps: { session, ...pageProps } }: any) => {
 	return (
 		<SessionProvider session={session}>
 			<Provider store={store}>
@@ -17,6 +17,6 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
 			</Provider>
 		</SessionProvider>
 	);
-}
+};
 
 export default MyApp;
