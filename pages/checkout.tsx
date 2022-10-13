@@ -3,8 +3,12 @@ import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import Currency from "react-currency-formatter";
 import { useSelector } from "react-redux";
+import Currency from "react-currency-formatter";
+// Stripe
+import Stripe from "stripe";
+import { fetchPostJSON } from "../utils/api-helpers";
+import getStripe from "../utils/get-stripejs";
 // redux
 import { selectBasketItems, selectBasketTotal } from "../redux/basketSlice";
 // Components
@@ -14,6 +18,7 @@ import CheckoutProduct from "../components/CheckoutProduct";
 // icon
 import { FiChevronDown } from "react-icons/fi";
 const Checkout = () => {
+	const [isloading, setIsloading] = useState<boolean>(false);
 	const items = useSelector(selectBasketItems);
 	const basketTotal = useSelector(selectBasketTotal);
 	const router = useRouter();
@@ -30,6 +35,37 @@ const Checkout = () => {
 		setGroupedItemsInBasket(groupedItems);
 	}, [items]);
 
+	const createCheckoutSession = async () => {
+		setIsloading(true);
+
+		const checkoutSession: Stripe.Checkout.Session = await fetchPostJSON(
+			"/api/checkout_sessions",
+			{
+				items: items,
+			}
+		);
+
+		// Internal Server Error
+		if ((checkoutSession as any).statusCode === 500) {
+			console.error((checkoutSession as any).message);
+			return;
+		}
+
+		const stripe = await getStripe();
+		const { error } = await stripe!.redirectToCheckout({
+			// Make the id field from the Checkout Session creation API response
+			// available to this file, so you can provide it as parameter here
+			// instead of the {{CHECKOUT_SESSION_ID}} placeholder.
+			sessionId: checkoutSession.id,
+		});
+
+		// If `redirectToCheckout` fails due to a browser or network
+		// error, display the localized error message to your customer
+		// using `error.message`.
+		console.warn(error.message);
+		setIsloading(false);
+	};
+
 	return (
 		<div className="min-h-screen overflow-hidden bg-[#E7ECEE]">
 			<Head>
@@ -44,9 +80,10 @@ const Checkout = () => {
 					</h1>
 					<p className="my-4">Free delivery and free returns.</p>
 					{items.length === 0 && (
-						<Link href="/">
-							<Button title="Continue Shopping" />
-						</Link>
+						<Button
+							title="Continue Shopping"
+							onClick={() => router.push("/")}
+						/>
 					)}
 				</div>
 
@@ -125,7 +162,13 @@ const Checkout = () => {
 											</span>
 										</h4>
 
-										<Button noIcon title="Check Out" width="w-full" />
+										<Button
+											noIcon
+											title="Check Out"
+											loading={isloading}
+											width="w-full"
+											onClick={createCheckoutSession}
+										/>
 									</div>
 								</div>
 							</div>
