@@ -3,10 +3,11 @@ import { GetServerSideProps } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import { useRouter } from "next/router";
-// import { useSession } from  "next-auth/react";
 import { useEffect, useState } from "react";
 import Currency from "react-currency-formatter";
 import { useMediaQuery } from "react-responsive";
+// next auth
+import { useSession } from "next-auth/react";
 // componsents
 import Button from "../components/molecules/Button";
 import Link from "next/link";
@@ -32,8 +33,8 @@ const Success = ({ products }: Props) => {
 		(acc, product) => acc + product.price.unit_amount / 100,
 		0
 	);
-	//   const { data: session } = useSession();
-	let session = false;
+	const { data: session } = useSession();
+
 	useEffect(() => {
 		setMounted(true);
 	}, []);
@@ -75,7 +76,7 @@ const Success = ({ products }: Props) => {
 							</p>
 							<h4 className="text-lg">
 								Thank you{" "}
-								{/* {session ? session.user?.name?.split(" ")[0] : "Guest"} */}
+								{session ? session.user?.name?.split(" ")[0] : "Guest"}
 							</h4>
 						</div>
 					</div>

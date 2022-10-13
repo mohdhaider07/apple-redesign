@@ -10,10 +10,13 @@ import { BiUser } from "react-icons/bi";
 //redux
 import { useSelector } from "react-redux";
 import { selectBasketItems } from "../redux/basketSlice";
+//next auth
+import { useSession, signIn, signOut } from "next-auth/react";
 
 const Navbar = () => {
+	const { data: session } = useSession();
 	const items = useSelector(selectBasketItems);
-	const session = false;
+
 	return (
 		<header className="sticky top-0 z-30 flex items-center justify-between bg-[#E7ECEE] p-4">
 			<div className="flex items-center justify-center md:w-1/5">
@@ -47,14 +50,17 @@ const Navbar = () => {
 				{session ? (
 					<Image
 						src={
+							session.user?.image ||
 							"https://www.freeiconspng.com/thumbs/account-icon/account-icon-8.png"
 						}
 						width={34}
 						height={34}
+						className="cursor-pointer rounded-full"
 						objectFit="contain"
+						onClick={() => signOut()}
 					/>
 				) : (
-					<BiUser className="headerIcon" />
+					<BiUser className="headerIcon" onClick={() => signIn()} />
 				)}
 			</div>
 		</header>

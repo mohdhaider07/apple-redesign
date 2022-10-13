@@ -7,6 +7,7 @@ module.exports = {
 			"spng.pngfind.com",
 			"www.freeiconspng.com",
 			"cdn.sanity.io",
+			"lh3.googleusercontent.com",
 		],
 	},
 };
