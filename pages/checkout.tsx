@@ -26,7 +26,7 @@ const Checkout = () => {
 		{} as { [key: string]: Product[] }
 	);
 
-	useEffect(() => {
+	useEffect(() => { 
 		const groupedItems = items.reduce((results, item) => {
 			(results[item._id] = results[item._id] || []).push(item);
 			return results;
