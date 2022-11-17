@@ -6,7 +6,7 @@ export interface BasketState{
 }
 const initialState: BasketState = {
     items: [],
-};
+}; 
 export const BasketSlice=createSlice({
     name: "basket",
     initialState,
