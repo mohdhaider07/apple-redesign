@@ -10,7 +10,7 @@
     } 
 }
 
-
+    
 @layer components{
     .headerLink{
         @apply cursor-pointer opacity-75 transition  hover:opacity-100;
