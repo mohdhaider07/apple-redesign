@@ -6,7 +6,7 @@ export interface BasketState{
 }
 const initialState: BasketState = {
     items: [],
-}; 
+};  
 export const BasketSlice=createSlice({
     name: "basket",
     initialState,
@@ -38,5 +38,5 @@ export const selectBasketItemsWithId = (state: RootState, id: string) => {
     state.basket.items.reduce(
       (total: number, item: Product) => (total += item.price),
       0
-    );
+          ); 
 export default BasketSlice.reducer;    
