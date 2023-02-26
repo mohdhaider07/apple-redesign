@@ -4,6 +4,7 @@ import { RootState } from "./store";
 export interface BasketState{
     items: Product[],
 }
+// initial basket
 const initialState: BasketState = {
     items: [],
 };  
